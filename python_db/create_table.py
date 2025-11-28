@@ -10,10 +10,12 @@ def crate_table():
     """
 
     conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute(query)
-    conn.commit()
-    conn.close()
+    try:
+        cursor = conn.cursor()
+        cursor.execute(query)
+        conn.commit()
+    finally:
+        conn.close()
 
 
 if __name__ == "__main__":
